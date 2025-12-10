@@ -18,12 +18,17 @@ python sora_workflow.py --brief "30-second ad, sarcastic, CPC went up again, tar
 python sora_workflow.py --brief "15-second ad, casual, morning routine hack, target: busy professionals, platform: TikTok, style: TikTok UGC"
 ```
 
-### 3. Documentary Style
+### 3. Dramatic Movie Trailer (Viral Meme)
+```bash
+python sora_workflow.py --brief "Ultra-realistic dramatic movie trailer style. Dark lighting. Slow-motion shots of a 35 years old man wearing zebra pattern hawaiin shirt staring at a computer screen as CPC rises by \$0.03. Thunder, rain on windows, voice-over whispering 'nothing will ever be the same.' Highly cinematic, emotional overkill, viral meme energy."
+```
+
+### 4. Documentary Style
 ```bash
 python sora_workflow.py --brief "60-second ad, serious, climate change impact, target: eco-conscious consumers, platform: YouTube, style: Documentary"
 ```
 
-### 4. Wes Anderson Style
+### 5. Wes Anderson Style
 ```bash
 python sora_workflow.py --brief "30-second ad, whimsical, coffee shop ritual, target: millennials, platform: Instagram, style: Wes Anderson"
 ```
@@ -42,6 +47,7 @@ Your brief should include:
 
 - **Wolf of Wall Street**: High-energy, excessive, luxury, sarcastic confidence
 - **TikTok UGC**: Authentic, casual, mobile-first, relatable
+- **Dramatic Movie Trailer**: Ultra-cinematic, slow-motion, emotional overkill, viral meme energy
 - **Documentary**: Real, observational, intimate, informative
 - **Wes Anderson**: Symmetrical, whimsical, pastel, quirky
 - **Apple Commercial**: Clean, minimal, premium, product-focused

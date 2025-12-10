@@ -58,5 +58,15 @@
     "visual_style": "Outdoor locations, extreme sports, dynamic movement, sweat and effort visible, triumph moments",
     "tone_keywords": ["energetic", "dynamic", "bold", "exciting", "motivational"],
     "best_for": ["Sports products", "Energy drinks", "Outdoor gear", "Fitness brands"]
+  },
+  "dramatic_movie_trailer": {
+    "name": "Dramatic Movie Trailer",
+    "description": "Ultra-cinematic, emotional overkill, slow-motion drama, perfect for viral meme content",
+    "cinematography_base": "Dark moody lighting, high contrast shadows, desaturated color palette with teal/orange grading, shallow depth of field (f/1.2-f/2.0), cinematic anamorphic lens flares",
+    "camera_style": "Ultra slow-motion (120-240fps), dramatic push-ins, low angle hero shots, rack focus reveals, handheld intensity moments, stabilized dolly moves",
+    "audio_style": "Orchestral trailer music with bass drops, whispered/gravelly voice-over, dramatic sound design, thunder/storm effects, silence for impact",
+    "visual_style": "Epic scale environmental shots, emotional close-ups, weather/atmospheric elements (rain, storm, fog), lens flares, particle effects, dramatic silhouettes",
+    "tone_keywords": ["dramatic", "cinematic", "epic", "intense", "emotional", "dark", "moody"],
+    "best_for": ["Viral meme content", "Parody ads", "Dramatic reveals", "Emotional storytelling", "High-impact social media"]
   }
 }

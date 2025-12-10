@@ -87,6 +87,15 @@ class StyleTemplate:
         "tone_keywords": ["authentic", "informative", "intimate", "observational", "real"]
     }
 
+    DRAMATIC_MOVIE_TRAILER = {
+        "name": "Dramatic Movie Trailer",
+        "cinematography_base": "Dark moody lighting, high contrast shadows, desaturated color palette with teal/orange grading, shallow depth of field (f/1.2-f/2.0), cinematic anamorphic lens flares",
+        "camera_style": "Ultra slow-motion (120-240fps), dramatic push-ins, low angle hero shots, rack focus reveals, handheld intensity moments, stabilized dolly moves",
+        "audio_style": "Orchestral trailer music with bass drops, whispered/gravelly voice-over, dramatic sound design, thunder/storm effects, silence for impact",
+        "visual_style": "Epic scale environmental shots, emotional close-ups, weather/atmospheric elements (rain, storm, fog), lens flares, particle effects, dramatic silhouettes",
+        "tone_keywords": ["dramatic", "cinematic", "epic", "intense", "emotional", "dark", "moody"]
+    }
+
     @classmethod
     def get_template(cls, style_name: str) -> Optional[Dict]:
         """Get template by name (case-insensitive)"""
@@ -98,6 +107,9 @@ class StyleTemplate:
             "wes anderson": cls.WES_ANDERSON,
             "documentary": cls.DOCUMENTARY,
             "doc": cls.DOCUMENTARY,
+            "dramatic movie trailer": cls.DRAMATIC_MOVIE_TRAILER,
+            "movie trailer": cls.DRAMATIC_MOVIE_TRAILER,
+            "trailer": cls.DRAMATIC_MOVIE_TRAILER,
         }
         return style_map.get(style_name.lower())
 
@@ -139,6 +151,19 @@ class BriefParser:
                     brief.platform = value
                 elif field == 'style':
                     brief.style = value
+
+        # Detect style from keywords if not explicitly labeled
+        if not brief.style:
+            if re.search(r'movie trailer|trailer style', brief_text, re.I):
+                brief.style = "movie trailer"
+            elif re.search(r'wolf of wall street', brief_text, re.I):
+                brief.style = "wolf of wall street"
+            elif re.search(r'wes anderson', brief_text, re.I):
+                brief.style = "wes anderson"
+            elif re.search(r'documentary|doc style', brief_text, re.I):
+                brief.style = "documentary"
+            elif re.search(r'tiktok|ugc', brief_text, re.I):
+                brief.style = "tiktok ugc"
 
         # Extract message (everything that's not a labeled field)
         message_parts = re.split(r'(target|platform|style)[:\s]+', brief_text, flags=re.I)
@@ -210,6 +235,8 @@ class StoryboardGenerator:
         # For the Wolf of Wall Street / sarcastic CPC example
         if self.brief.style and "wolf" in self.brief.style.lower():
             return self._generate_wolf_cpc_storyboard()
+        elif self.brief.style and "trailer" in self.brief.style.lower():
+            return self._generate_dramatic_trailer_storyboard()
         return []
 
     def _generate_medium_form(self) -> List[Shot]:
@@ -217,10 +244,14 @@ class StoryboardGenerator:
         # For the Wolf of Wall Street / sarcastic CPC example
         if self.brief.style and "wolf" in self.brief.style.lower():
             return self._generate_wolf_cpc_storyboard()
+        elif self.brief.style and "trailer" in self.brief.style.lower():
+            return self._generate_dramatic_trailer_storyboard()
         return []
 
     def _generate_long_form(self) -> List[Shot]:
         """Generate 60+ second storyboard (5-8 shots)"""
+        if self.brief.style and "trailer" in self.brief.style.lower():
+            return self._generate_dramatic_trailer_storyboard()
         return []
 
     def _generate_wolf_cpc_storyboard(self) -> List[Shot]:
@@ -264,6 +295,75 @@ class StoryboardGenerator:
             cinematography=f"{template['cinematography_base']}, dramatic backlighting with hair light, edge lighting to separate subject from background, warm and cool tones balanced",
             audio="Music shifts to confident hip-hop beat, subject voice-over with sarcastic delivery: 'CPC going up again? Time to get smarter, not broker.' Ends with music sting.",
             style=f"Wolf of Wall Street direct address style, breaking fourth wall, {platform} native feel with polished production value, ends with strong call-to-action energy"
+        ))
+
+        return shots
+
+    def _generate_dramatic_trailer_storyboard(self) -> List[Shot]:
+        """Generate dramatic movie trailer style storyboard with emotional overkill"""
+        template = self.style_template or StyleTemplate.DRAMATIC_MOVIE_TRAILER
+        platform = self.brief.platform or "Social Media"
+
+        shots = []
+
+        # SHOT 1: Opening - Thunder and Rain Ambience
+        shots.append(Shot(
+            number=1,
+            subject="Rain droplets on window glass in extreme close-up, backlit by occasional lightning flashes, out-of-focus city lights beyond",
+            scene="Dark office interior, nighttime, storm raging outside floor-to-ceiling windows",
+            visual_details="Water trails running down glass, reflections of distant lightning creating intermittent blue-white illumination, darkness between flashes, condensation fog on edges of window pane",
+            action_camera="Ultra slow-motion (240fps) tracking shot along window surface, camera glides horizontally as rain streaks vertically, slow rack focus from water droplets to blurred lights beyond",
+            cinematography=f"{template['cinematography_base']}, shot on RED Komodo 6K, 85mm lens at f/1.2, teal and orange color grade, heavy desaturation, practical lightning effects, anamorphic lens flares",
+            audio="Deep rumbling thunder starting distant then crescendoing, heavy rain ambience, ominous low-frequency drone, silence between thunder cracks for tension",
+            style=f"{template['visual_style']}, establishing atmospheric dread, ultra-cinematic meme parody energy, viral-ready opening hook"
+        ))
+
+        # SHOT 2: The Man - First Reveal
+        shots.append(Shot(
+            number=2,
+            subject="35-year-old man in vibrant zebra pattern Hawaiian shirt, face half-lit by blue computer screen glow, expression frozen in dawning realization, eyes widening imperceptibly in slow-motion",
+            scene="Same dark office, subject seated at desk, illuminated only by monitor glow and occasional lightning flashes through windows behind him",
+            visual_details="Absurd zebra pattern shirt contrasting with deadly serious expression, stubble visible on jaw, slight reflection of screen in his glasses/eyes, hair slightly disheveled, office plants visible as dark silhouettes",
+            action_camera="Ultra slow-motion (180fps) push-in from medium to close-up, camera moves glacially toward face, small movements (blink, slight head turn) stretched to feel momentous",
+            cinematography=f"Low-key lighting, screen providing cool blue key light on face, strong rim light from window creating separation, f/1.4 for shallow depth of field, background bokeh of rain on windows, subtle film grain",
+            audio="Ambient rain and distant thunder continuing, quiet tense electronic undertone building, subject's breathing barely audible and slowed down, keyboard click echoing ominously",
+            style="Dramatic hero shot applied to mundane moment, emotional intensity completely disproportionate to situation, meme-worthy juxtaposition of shirt and gravitas"
+        ))
+
+        # SHOT 3: Screen Reveal - The $0.03 Rise
+        shots.append(Shot(
+            number=3,
+            subject="Computer screen displaying CPC metrics dashboard, number changing from $2.47 to $2.50, the +$0.03 increase highlighted in blood red",
+            scene="Extreme close-up of monitor, rest of office completely out of focus, screen provides only light source",
+            visual_details="Sharp digital numbers on analytics dashboard, red warning indicator pulsing, cursor hovering nearby frozen in time, slight screen glare creating lens artifacts, UI elements showing graphs with red ascending line",
+            action_camera="Slow-motion (120fps) macro push-in on the specific number as it ticks up, ends in extreme close-up of the '$2.50' filling frame, shallow rack focus across screen surface",
+            cinematography=f"Macro lens work with extreme shallow depth of field (f/1.2), screen glow creating cool blue ambient light, slight chromatic aberration on edges for cinematic feel, desaturated except for red UI elements",
+            audio="Single ominous bass drop as number changes, sound design: digital 'click' stretched and pitched down to sound catastrophic, thunder crack timed with number change, whispered voice beginning: 'nothing...'",
+            style="Treating trivial data point as world-ending revelation, slow-motion emphasizing the absurdity, viral meme energy through dramatic over-reaction"
+        ))
+
+        # SHOT 4: Reaction - The Weight of $0.03
+        shots.append(Shot(
+            number=4,
+            subject="Same man, now shown in profile silhouette against rain-streaked window, hand slowly rising to face in despair, zebra shirt pattern visible in rim lighting",
+            scene="Subject standing now, positioned against window, backlit by storm and city lights, rain visible on glass behind him",
+            visual_details="Strong silhouette with blue-white edge lighting from window, zebra pattern creating striking contrast in rim light, rain streaks on window moving in slow-motion, lightning flash illuminating his profile for one frame, hand covering mouth in 'shocked' gesture",
+            action_camera="Ultra slow-motion (240fps) side profile shot, camera slowly trucks left to right, slight low angle to create dramatic stature, ends with lightning flash silhouette",
+            cinematography=f"{template['cinematography_base']}, dramatic backlighting, silhouette with rim light, storm providing practical effects behind subject, anamorphic lens flare from city lights, heavy shadow contrast",
+            audio="Voice-over continues in dramatic whisper: 'will ever be the same...', orchestral trailer music swelling with deep brass and strings, rain and thunder intensifying, breathing heavy and slow",
+            style="Classic trailer hero silhouette moment wasted on marketing metric anxiety, absurdist contrast between visual drama and actual stakes"
+        ))
+
+        # SHOT 5: Title Card / Call to Action
+        shots.append(Shot(
+            number=5,
+            subject="Dramatic text reveal emerging from darkness: 'WHEN CPC RISES...' fading in, then '...EVERYTHING CHANGES' appearing below with cinematic reveal",
+            scene="Pure black background with subtle particle effects (rain, dust) barely visible, text illuminated dramatically",
+            visual_details="Bold cinematic typography, white text with slight glow/bloom effect, subtle animation of letters appearing, particle effects around text, optional: small text below in contrast font showing actual call-to-action or brand",
+            action_camera="Static camera, text animation handled in post, possible slow zoom into text for intensity, cut to black before fully zooming in",
+            cinematography=f"High contrast black background, text as light source, subtle volumetric lighting on particles, clean dramatic presentation, desaturated color palette continuing",
+            audio="Music hits final dramatic crescendo then cuts to silence, final thunder crash, optional: quick brand message or ironic undercut ('Learn to optimize your CPC' in normal voice), final bass drop",
+            style="Classic movie trailer title card treatment, maximum drama for minimum stakes, perfect viral meme format with built-in shareability"
         ))
 
         return shots
