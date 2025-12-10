@@ -1,0 +1,62 @@
+{
+  "wolf_of_wall_street": {
+    "name": "Wolf of Wall Street",
+    "description": "High-energy, excessive confidence, luxury settings, dynamic camera work",
+    "cinematography_base": "High-contrast lighting, warm color grading with golden hour tones, wide aperture (f/1.4-f/2.8), dynamic camera movement",
+    "camera_style": "Steadicam tracking shots, dramatic push-ins, dutch angles for intensity, fast-paced cuts",
+    "audio_style": "Upbeat energetic music, confident voice-over, quick-cut sound design",
+    "visual_style": "Luxurious settings, power dynamics, excessive confidence, wealth signifiers, high-energy editing",
+    "tone_keywords": ["confident", "excessive", "sarcastic", "energetic", "bold"],
+    "best_for": ["Finance", "SaaS", "B2B", "High-ticket products"]
+  },
+  "tiktok_ugc": {
+    "name": "TikTok UGC",
+    "description": "Authentic, casual, mobile-first content that feels native to the platform",
+    "cinematography_base": "Natural lighting, mobile phone aesthetic, vertical 9:16 format, slightly grainy",
+    "camera_style": "Handheld, selfie-style framing, direct-to-camera address, quick cuts, trending transitions",
+    "audio_style": "Conversational voice-over, trending audio clips, authentic speaking style",
+    "visual_style": "Casual settings (bedroom, coffee shop, car), authentic and unpolished, relatable scenarios",
+    "tone_keywords": ["casual", "authentic", "relatable", "conversational", "trend-aware"],
+    "best_for": ["DTC brands", "Apps", "Lifestyle products", "Gen Z/Millennial audiences"]
+  },
+  "wes_anderson": {
+    "name": "Wes Anderson",
+    "description": "Perfectly symmetrical, whimsical, pastel colors, quirky and precise",
+    "cinematography_base": "Perfectly symmetrical framing, pastel color palette, flat space, static camera, centered composition",
+    "camera_style": "Locked-off shots, whip pans, perfectly centered subjects, lateral tracking shots",
+    "audio_style": "Whimsical orchestral score, deadpan dialogue delivery, vintage sound effects",
+    "visual_style": "Meticulously arranged props, vintage aesthetic, quirky character styling, geometric patterns",
+    "tone_keywords": ["whimsical", "precise", "quirky", "nostalgic", "deadpan"],
+    "best_for": ["Lifestyle brands", "Creative products", "Storytelling campaigns", "Brand differentiation"]
+  },
+  "documentary": {
+    "name": "Documentary",
+    "description": "Authentic, observational, real moments, informative and intimate",
+    "cinematography_base": "Natural lighting, realistic color grading, varying focal lengths, observational style",
+    "camera_style": "Handheld for intimacy, smooth gimbal for following action, locked-off for interviews",
+    "audio_style": "Natural ambient sound, clear voice-over narration, minimal music",
+    "visual_style": "Real locations, authentic moments, detail close-ups, environmental context",
+    "tone_keywords": ["authentic", "informative", "intimate", "observational", "real"],
+    "best_for": ["Educational content", "Brand stories", "Testimonials", "Social impact"]
+  },
+  "apple_commercial": {
+    "name": "Apple Commercial",
+    "description": "Clean, minimalist, product-focused, aspirational and premium",
+    "cinematography_base": "Clean white/minimal backgrounds, perfect product lighting, shallow depth of field, pristine images",
+    "camera_style": "Slow smooth movements, macro product shots, reveal moments, perfectly timed transitions",
+    "audio_style": "Minimal electronic/piano music, crisp product sounds, occasional warm voice-over",
+    "visual_style": "Minimalist environments, focus on product details, white space, premium feel, human moments with product",
+    "tone_keywords": ["clean", "premium", "aspirational", "simple", "human"],
+    "best_for": ["Tech products", "Premium brands", "Product launches", "Lifestyle tech"]
+  },
+  "action_sports": {
+    "name": "Action Sports",
+    "description": "High-energy, dynamic movement, extreme angles, adrenaline-fueled",
+    "cinematography_base": "High shutter speed for crisp action, natural outdoor lighting, wide and ultra-wide lenses, vibrant colors",
+    "camera_style": "GoPro POV shots, drone aerials, slow-motion captures, extreme angles, rapid cuts",
+    "audio_style": "High-energy electronic or rock music, natural action sounds amplified, minimal dialogue",
+    "visual_style": "Outdoor locations, extreme sports, dynamic movement, sweat and effort visible, triumph moments",
+    "tone_keywords": ["energetic", "dynamic", "bold", "exciting", "motivational"],
+    "best_for": ["Sports products", "Energy drinks", "Outdoor gear", "Fitness brands"]
+  }
+}
